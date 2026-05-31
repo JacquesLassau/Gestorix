@@ -1,0 +1,204 @@
+﻿@using Dispel.Models;
+@using DispelDLL.Infrastructure;
+@{ string local = "../Home/Index"; }
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" type="image/png" href="~/Images/logo-header.png">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Dispel</title>
+    <meta name="description" content="DISPEL">
+    <meta name=" author" content="Jacques de Lassau">
+    <meta http-equiv="content-language" content="pt-br">
+    <meta name="robots" content="index,nofollow">
+    <meta name="rating" content="general">
+    <!-- meta http-equiv="refresh" content="600" Utilizada para recarregar a página de forma assincrona. -->
+
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/jquery-confirm.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <script>
+
+
+        var produtos = '';
+        var servicos = '';
+        var dadosEmpresa = '';
+        var urlQrCodeWhatsApp = '';
+
+        var pedido = {
+            cliente: {                
+                Nome: "",
+                Documento: "",
+                Endereco: "",
+                Bairro: "",
+                Cidade: "",
+                Uf: "",
+                Cep: ""
+            },
+            veiculo: {                
+                Descricao: "",
+                Placa: "",
+                QuilometrosRodados: ""
+            }
+        };
+
+        window.onload = function () {
+            var xhr = new XMLHttpRequest();
+            var pathname = location.pathname;
+            if (pathname.includes("/Dispel"))
+                pathname = "/Dispel";
+            else
+                pathname = '';
+
+            xhr.open("GET", pathname + "/Empresa/SelecionarEmpresa", true);
+            xhr.responseType = 'json';
+
+            xhr.onload = function () {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    dadosEmpresa = xhr.response;
+                    QrCodeWhatsAppEmpresa();
+                } else {
+                    console.error("Erro ao carregar os dados da empresa:" + xhr.status);
+                }
+            };
+            xhr.send();
+        };
+
+        function QrCodeWhatsAppEmpresa() {
+            urlQrCodeWhatsApp = 'https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://api.whatsapp.com/send?phone=';
+            urlQrCodeWhatsApp = urlQrCodeWhatsApp + dadosEmpresa.DddChat + dadosEmpresa.TelefoneChat;
+        }
+
+    </script>
+    <div id="loading" style="display:none;">
+        <div class="spinner"></div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="nav-link mb-1" aria-current="page" href="@Url.Action("Index", "Home")"><img src="~/Images/logo-header.png" /></a>
+            @if (UsuarioValido.ValidUser())
+            {
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 margin-custom-left">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("EditarEmpresaUI", "Empresa")" tabindex="-1"><i class="fa fa-building"></i> Dados da Empresa</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-car"></i> Produto
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="@Url.Action("CadastrarProdutoUI", "Produto")"><i class="fa fa-plus-circle"></i> Novo</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="@Url.Action("BuscarProdutoUI", "Produto")"><i class="fa fa-search"></i> Procurar</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("MonitorUI", "Pedido")" tabindex="-1"><i class="fa fa-file-text"></i> Pedidos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("RelatorioUI", "Relatorio")" tabindex="-1"><i class="fa fa-pie-chart"></i> Imprimir relatórios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" tabindex="-1"><i class="fa fa-user"></i> @Session["sessaoEmail"]</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex float-end" style="margin-bottom:0px;">
+                        <a href="@Url.Action("Logout", "Authentication")" class="btn btn-outline-light"><i class="fa fa-sign-out"></i>Sair</a>
+                    </form>
+                </div>
+            }
+        </div>
+    </nav>
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Dispel</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/Produto")
+    @Scripts.Render("~/bundles/Servico")
+    @Scripts.Render("~/bundles/Genericos")
+
+    @RenderSection("scripts", required: false)
+
+    @if (TempData != null && TempData.ContainsKey(ConstantesAlerta.MENSAGEM_TEMP_DATA_TITULO))
+    {
+        <link rel="stylesheet" href="~/Content/jquery-confirm.min.css">
+        <script src="~/Scripts/jquery-confirm.min.js"></script>
+
+        <script type="text/javascript">
+                $(document).ready(function () {
+                    $.confirm({
+                        title: '<p style="text-align:center;padding:16px;width:100%;">@Html.Raw(HttpUtility.JavaScriptStringEncode(TempData[ConstantesAlerta.MENSAGEM_TEMP_DATA_TITULO].ToString()))</p>',
+                        content: '<p style="text-align:center;">@Html.Raw(HttpUtility.JavaScriptStringEncode(TempData[ConstantesAlerta.MENSAGEM_TEMP_DATA_DESCRICAO].ToString()))</p>',
+                        type: 'warning',
+                        typeAnimated: true,
+                        containerFluid: true,
+                        columnClass: 'col-lg-6 col-md-6 col-sm-6 col-xs-8',
+                        animationBounce: 2,
+                        buttons: {
+                            tryAgain: {
+                                text: 'Novamente',
+                                btnClass: 'btn-outline-dark',
+                                action: function () {
+                                }
+                            },
+                            close: {
+                                text: 'Sair',
+                                btnClass: 'btn-outline-dark',
+                                action: function () {
+                                    window.location.href = '@local';
+                                }
+                            }
+                        }
+                    });
+                });
+        </script>
+    }
+    <script src="~/Scripts/jquery.mask.min.js"></script>
+    <script src="~/Scripts/jmask.js"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/dataTables.bootstrap5.min.js"></script>
+    <script src="~/Scripts/jquery-confirm.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tabPedidos').DataTable({
+                "language": {
+                    "lengthMenu": "_MENU_",
+                    "zeroRecords": "Nenhum registro encontrado",
+                    "info": "",
+                    "infoEmpty": "Nenhum registro disponível",
+                    "infoFiltered": "(filtrado de _MAX_ registros no total)",
+                    "search": "Pesquisar:",
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Próximo"
+                    }
+                },
+                "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+                "order": [[1, "desc"]]
+            });
+        });
+    </script>
+
+</body>
+</html>

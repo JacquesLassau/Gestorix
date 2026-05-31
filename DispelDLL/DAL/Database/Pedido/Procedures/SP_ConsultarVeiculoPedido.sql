@@ -1,0 +1,22 @@
+USE [DB_DISPEL]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+  
+CREATE PROCEDURE [dbo].[SP_ConsultarVeiculoPedido] 
+ @IdPedido int
+AS  
+BEGIN
+	SELECT 	
+		IdPEDIDO,
+		DESCRICAO,
+		PLACA,			
+		QUILOMETROsRODADOS
+	FROM 
+		VeiculoPedido 
+	WHERE
+		IdPEDIDO = @IdPedido
+END

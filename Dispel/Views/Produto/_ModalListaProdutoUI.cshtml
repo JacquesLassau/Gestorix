@@ -1,0 +1,18 @@
+﻿<div id="Produtos" class="modal fade p-0" role="dialog">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="container">
+                <hr />
+                <p class="fs-2 fw-lighter bg-light">Selecione o Produto ou Serviço</p>
+                <hr />
+            </div>            
+            <div class="modal-body text-center col-sm-12 col-md-12">
+                <iframe src="@Url.Action("IframeListaProdutoUI", "Produto")" frameborder="0" id="IframeListaProdutoUI" name="IframeListaProdutoUI" title="Iframe para lista de Produtos"></iframe>
+            </div>
+            <div class="modal-footer">
+                <a href="@Url.Action("CadastrarProdutoUI", "Produto")" class="btn btn-outline-success form-group"><i class="fa fa-plus-circle"></i> Cadastrar Novo</a>                
+                <button class="btn btn-outline-secondary form-group" type="button" data-bs-dismiss="modal"><i class="fa fa-reply"></i> Sair</button>
+            </div>
+        </div>
+    </div>
+</div>

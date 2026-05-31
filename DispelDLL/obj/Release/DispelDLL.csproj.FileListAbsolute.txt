@@ -1,0 +1,16 @@
+C:\Users\jacqu\source\repos\Dispel\DispelDLL\bin\Release\DispelDLL.dll
+C:\Users\jacqu\source\repos\Dispel\DispelDLL\bin\Release\DispelDLL.pdb
+C:\Users\jacqu\source\repos\Dispel\DispelDLL\bin\Release\System.ComponentModel.Annotations.dll
+C:\Users\jacqu\source\repos\Dispel\DispelDLL\obj\Release\DispelDLL.csproj.AssemblyReference.cache
+C:\Users\jacqu\source\repos\Dispel\DispelDLL\obj\Release\DispelDLL.csproj.CoreCompileInputs.cache
+C:\Users\jacqu\source\repos\Dispel\DispelDLL\obj\Release\DispelDLL.csproj.CopyComplete
+C:\Users\jacqu\source\repos\Dispel\DispelDLL\obj\Release\DispelDLL.dll
+C:\Users\jacqu\source\repos\Dispel\DispelDLL\obj\Release\DispelDLL.pdb
+C:\Users\jacqu\OneDrive\Documentos\RepositoriosVS\Dispel\DispelDLL\bin\Release\DispelDLL.dll
+C:\Users\jacqu\OneDrive\Documentos\RepositoriosVS\Dispel\DispelDLL\bin\Release\DispelDLL.pdb
+C:\Users\jacqu\OneDrive\Documentos\RepositoriosVS\Dispel\DispelDLL\bin\Release\System.ComponentModel.Annotations.dll
+C:\Users\jacqu\OneDrive\Documentos\RepositoriosVS\Dispel\DispelDLL\obj\Release\DispelDLL.csproj.AssemblyReference.cache
+C:\Users\jacqu\OneDrive\Documentos\RepositoriosVS\Dispel\DispelDLL\obj\Release\DispelDLL.csproj.CoreCompileInputs.cache
+C:\Users\jacqu\OneDrive\Documentos\RepositoriosVS\Dispel\DispelDLL\obj\Release\DispelDLL.csproj.Up2Date
+C:\Users\jacqu\OneDrive\Documentos\RepositoriosVS\Dispel\DispelDLL\obj\Release\DispelDLL.dll
+C:\Users\jacqu\OneDrive\Documentos\RepositoriosVS\Dispel\DispelDLL\obj\Release\DispelDLL.pdb

@@ -1,0 +1,94 @@
+﻿@{Layout = "~/Views/Shared/_Layout.cshtml";}
+@model DispelDLL.DML.Produto
+@{
+    ViewBag.Title = "Exclusão do Produto";
+    string local = Url.Action("ExcluirProdutoUI", "Produto");
+    string contexto = Url.Action("BuscarProdutoUI", "Produto");
+    string popConfirmarExclusao = "~/Views/Shared/_ConfirmarExclusao.cshtml";
+}
+
+<div class="container">
+    <hr />
+    <p class="fs-2 fw-lighter bg-light">Detalhes do Produto</p>
+    <hr />
+    @using (Html.BeginForm("ExcluirProduto", "Produto", FormMethod.Post))
+    {
+        @Html.HiddenFor(model => model.ReferenciaProduto)
+        <div class="row">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <fieldset id="dadosGerais">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ReferenciaProduto, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ReferenciaProduto, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.ReferenciaProduto, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TipoProduto, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.ValidationMessageFor(model => model.TipoProduto, "", new { @class = "text-danger" })
+                            @Html.DropDownListFor(model => model.TipoProduto, new SelectList(new string[]
+                            {
+                                "Novo",
+                                "Usado",
+
+                            }), new { @class = "form-control form-select", @readonly = "readonly" })
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Fabricante, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Fabricante, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.Fabricante, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CustoProduto, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CustoProduto, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.CustoProduto, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PrecoProduto, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.PrecoProduto, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.PrecoProduto, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Quantidade, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Quantidade, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.Quantidade, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a class="btn btn-outline-success form-group" data-bs-toggle="modal" data-bs-target="#ConfirmarExclusao"><i class="fa fa-check"></i> Confirmar</a>
+            @{ Html.RenderPartial(popConfirmarExclusao); }
+        <a href="@contexto" class="btn btn-outline-secondary form-group"><i class="fa fa-reply"></i> Sair</a>
+        </div>
+        @Html.AntiForgeryToken()
+    }
+</div>
+
+@section Scripts {@Scripts.Render("~/bundles/jqueryval")}
+
+
+
+
+

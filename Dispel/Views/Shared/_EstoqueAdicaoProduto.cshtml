@@ -1,0 +1,22 @@
+﻿<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addModalLabel">Confirma Adição ao Estoque?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Insira a quantidade de produtos que deseja adicionar ao estoque:
+                <div class="d-flex align-items-center">
+                    <div class="input-group numberControlProducts">
+                        <input type="text" class="form-control" id="AddQuantidade" maxlength="6">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" onclick="AtualizarProdutoNoEstoque('add')"><i class="fa fa-plus"></i> Adicionar</button>
+            </div>
+        </div>
+    </div>
+</div>

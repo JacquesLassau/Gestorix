@@ -1,0 +1,26 @@
+USE [DB_DISPEL]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+  
+CREATE PROCEDURE [dbo].[SP_ConsultarClientePedido] 
+ @IdPedido int
+AS  
+BEGIN
+	SELECT 	
+		IdPEDIDO,
+		NOME,
+		DOCUMENTO,			
+		ENDERECO,		
+		BAIRRO,
+		CIDADE,
+		UF,
+		CEP
+	FROM 
+		ClientePedido 
+	WHERE
+		IdPEDIDO = @IdPedido
+END

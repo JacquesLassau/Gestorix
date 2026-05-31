@@ -1,0 +1,116 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\ProjetosVS\\Dispel\\Dispel\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{69CA6326-C32C-4534-9AD0-540674C3A867}|Dispel.csproj|c:\\projetosvs\\dispel\\dispel\\scripts\\genericos\\utils.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{69CA6326-C32C-4534-9AD0-540674C3A867}|Dispel.csproj|solutionrelative:scripts\\genericos\\utils.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69CA6326-C32C-4534-9AD0-540674C3A867}|Dispel.csproj|c:\\projetosvs\\dispel\\dispel\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{69CA6326-C32C-4534-9AD0-540674C3A867}|Dispel.csproj|solutionrelative:web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69CA6326-C32C-4534-9AD0-540674C3A867}|Dispel.csproj|c:\\projetosvs\\dispel\\dispel\\views\\empresa\\editarempresaui.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{69CA6326-C32C-4534-9AD0-540674C3A867}|Dispel.csproj|solutionrelative:views\\empresa\\editarempresaui.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69CA6326-C32C-4534-9AD0-540674C3A867}|Dispel.csproj|C:\\ProjetosVS\\Dispel\\Dispel\\controllers\\empresacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69CA6326-C32C-4534-9AD0-540674C3A867}|Dispel.csproj|solutionrelative:controllers\\empresacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{51389A3F-BC5D-4A32-81BE-98DEFC924C62}|..\\DispelDLL\\DispelDLL.csproj|c:\\projetosvs\\dispel\\dispeldll\\dml\\empresa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EditarEmpresaUI.cshtml",
+              "DocumentMoniker": "C:\\ProjetosVS\\Dispel\\Dispel\\Views\\Empresa\\EditarEmpresaUI.cshtml",
+              "RelativeDocumentMoniker": "Views\\Empresa\\EditarEmpresaUI.cshtml",
+              "ToolTip": "C:\\ProjetosVS\\Dispel\\Dispel\\Views\\Empresa\\EditarEmpresaUI.cshtml",
+              "RelativeToolTip": "Views\\Empresa\\EditarEmpresaUI.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAABvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-12T19:12:21.041Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\ProjetosVS\\Dispel\\Dispel\\Web.config",
+              "RelativeDocumentMoniker": "Web.config",
+              "ToolTip": "C:\\ProjetosVS\\Dispel\\Dispel\\Web.config",
+              "RelativeToolTip": "Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2026-04-12T18:34:13.929Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Utils.js",
+              "DocumentMoniker": "C:\\ProjetosVS\\Dispel\\Dispel\\Scripts\\Genericos\\Utils.js",
+              "RelativeDocumentMoniker": "Scripts\\Genericos\\Utils.js",
+              "ToolTip": "C:\\ProjetosVS\\Dispel\\Dispel\\Scripts\\Genericos\\Utils.js",
+              "RelativeToolTip": "Scripts\\Genericos\\Utils.js",
+              "ViewState": "AgIAAAwAAAAAAAAAAAA6wCEAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-04-12T17:52:41.406Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EmpresaController.cs",
+              "DocumentMoniker": "C:\\ProjetosVS\\Dispel\\Dispel\\Controllers\\EmpresaController.cs",
+              "RelativeDocumentMoniker": "Controllers\\EmpresaController.cs",
+              "ToolTip": "C:\\ProjetosVS\\Dispel\\Dispel\\Controllers\\EmpresaController.cs",
+              "RelativeToolTip": "Controllers\\EmpresaController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T23:05:27.958Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Empresa.cs",
+              "DocumentMoniker": "C:\\ProjetosVS\\Dispel\\DispelDLL\\DML\\Empresa.cs",
+              "RelativeDocumentMoniker": "..\\DispelDLL\\DML\\Empresa.cs",
+              "ToolTip": "C:\\ProjetosVS\\Dispel\\DispelDLL\\DML\\Empresa.cs",
+              "RelativeToolTip": "..\\DispelDLL\\DML\\Empresa.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-27T11:14:02.612Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

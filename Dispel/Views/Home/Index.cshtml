@@ -1,0 +1,42 @@
+﻿@{ViewBag.Title = "Início";}
+
+<div class="container dashboard mt-3">
+    <div class="row g-4 justify-content-center">        
+        <div class="col-md-6 col-lg-6">
+            <a href="@Url.Action("EditarEmpresaUI", "Empresa")" class="card-link">
+                <div class="card text-center p-4" style="background-color:#e6f0ff;">
+                    <i class="fa fa-building fa-3x text-primary mb-3"></i>
+                    <h5 class="fw-bold">Dados da Empresa</h5>
+                    <p class="mb-0">Gerencie as informações da sua empresa</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6 col-lg-6">
+            <a href="@Url.Action("CadastrarProdutoUI","Produto")" class="card-link">
+                <div class="card text-center p-4" style="background-color:#eafaea;">
+                    <i class="fa fa-car fa-3x text-success mb-3"></i>
+                    <h5 class="fw-bold">Produtos e Serviços</h5>
+                    <p class="mb-0">Cadastre seus Produtos ou Serviços</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6 col-lg-6">
+            <a href="@Url.Action("MonitorUI", "Pedido")" class="card-link">
+                <div class="card text-center p-4" style="background-color:#fff8e6;">
+                    <i class="fa fa-file-text fa-3x text-warning mb-3"></i>
+                    <h5 class="fw-bold">Pedidos</h5>
+                    <p class="mb-0">Controle e acompanhe seus Pedidos</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6 col-lg-6">
+            <a href="@Url.Action("RelatorioUI", "Relatorio")" class="card-link">
+                <div class="card text-center p-4" style="background-color:#fdeaea;">
+                    <i class="fa fa-pie-chart fa-3x text-danger mb-3"></i>
+                    <h5 class="fw-bold">Relatórios</h5>
+                    <p class="mb-0">Emita relatórios detalhados e resumidos.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

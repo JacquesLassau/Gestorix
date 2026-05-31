@@ -1,0 +1,22 @@
+﻿USE [DB_DISPEL]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+  
+CREATE PROCEDURE [dbo].[SP_SelecionarItemParaPedido] 
+ @Referencia varchar(50)
+AS  
+BEGIN
+	SELECT 	
+		TIPO,
+		DESCRICAO,
+		CUSTO,
+		PRECO
+	FROM 
+		Produto 
+	WHERE
+		IdREFPRODUTO = @Referencia AND SITUACAO = 'A'	
+END
