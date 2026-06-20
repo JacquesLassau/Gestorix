@@ -1,0 +1,262 @@
+﻿<script>            
+    var referencia = '';
+    function buscarClientePedido(janelaNota) {
+        try {      
+            var pathname = location.pathname;
+            if (pathname.includes("/Gestorix"))
+                pathname = "/Gestorix";
+            else
+                pathname = '';
+
+            $.get(pathname + "/Pedido/BuscarClientePedido?nrOrcamento=" + referencia, function (data) {
+                if (data != null && data.Documento != null) {
+                    janelaNota.document.getElementById('Nome').value = data.Nome;
+                    janelaNota.document.getElementById('Documento').value = data.Documento;
+                    janelaNota.document.getElementById('Endereco').value = data.Endereco;
+                    janelaNota.document.getElementById('Bairro').value = data.Bairro;
+                    janelaNota.document.getElementById('Cidade').value = data.Cidade;
+                    janelaNota.document.getElementById('Uf').value = data.Uf;
+                    janelaNota.document.getElementById('Cep').value = data.Cep;
+                }
+            });
+        } catch (error) {
+            console.error("Problemas ao consultar o cliente do pedido: ", error);
+        }
+    }   
+
+    function buscarVeiculoPedido(janelaNova) {
+        try {            
+            var pathname = location.pathname;
+            if (pathname.includes("/Gestorix"))
+                pathname = "/Gestorix";
+            else
+                pathname = '';
+
+            $.get(pathname + "/Pedido/BuscarVeiculoPedido?nrOrcamento=" + referencia, function (data) {
+                if (data != null && data.Placa != null) {
+                    janelaNova.document.getElementById('Descricao').value = data.Descricao;
+                    janelaNova.document.getElementById('Placa').value = data.Placa;
+                    janelaNova.document.getElementById('QuilometrosRodados').value = data.QuilometrosRodados;                    
+                }
+            });
+        } catch (error) {
+            console.error("Problemas ao consultar o veículo do pedido: ", error);
+        }
+    }
+
+    function obterClientePedido(janelaNova) {
+        var clientePedido = {
+            IdPedido: referencia,
+            Nome: janelaNova.document.getElementById('Nome').value,
+            Documento: janelaNova.document.getElementById('Documento').value,
+            Endereco: janelaNova.document.getElementById('Endereco').value,
+            Bairro: janelaNova.document.getElementById('Bairro').value,
+            Cidade: janelaNova.document.getElementById('Cidade').value,
+            Uf: janelaNova.document.getElementById('Uf').value,
+            Cep: janelaNova.document.getElementById('Cep').value
+        }     
+        return clientePedido;        
+    }
+
+    function obterVeiculoPedido(janelaNova) {
+        var veiculoPedido = {
+            IdPedido: referencia,
+            Descricao: janelaNova.document.getElementById('Descricao').value,
+            Placa: janelaNova.document.getElementById('Placa').value,
+            QuilometrosRodados: janelaNova.document.getElementById('QuilometrosRodados').value            
+        }     
+        return veiculoPedido;        
+    }    
+
+    function cadastrarClientePedido(janelaNova) {
+        try {
+            pedido.cliente.Nome = janelaNova.document.getElementById('Nome').value;
+            pedido.cliente.Documento = janelaNova.document.getElementById('Documento').value;
+            pedido.cliente.Endereco = janelaNova.document.getElementById('Endereco').value;
+            pedido.cliente.Bairro = janelaNova.document.getElementById('Bairro').value;
+            pedido.cliente.Cidade = janelaNova.document.getElementById('Cidade').value;
+            pedido.cliente.Uf = janelaNova.document.getElementById('Uf').value;
+            pedido.cliente.Cep = janelaNova.document.getElementById('Cep').value;
+        } catch (error) {
+            console.error("Problemas ao cadastrar dados do cliente do pedido: ", error);
+        }
+    }
+    function cadastrarVeiculoPedido(janelaNova) {
+        try {
+            pedido.veiculo.Descricao = janelaNova.document.getElementById('Descricao').value;
+            pedido.veiculo.Placa = janelaNova.document.getElementById('Placa').value;
+            pedido.veiculo.QuilometrosRodados = janelaNova.document.getElementById('QuilometrosRodados').value;
+        } catch (error) {
+            console.error("Problemas ao cadastrar dados do veiculo do pedido: ", error);
+        }
+    }
+
+    document.getElementById("imprimir-pedido").addEventListener("click", function () {
+        referencia = document.getElementById('nrOrcamento').innerText
+        const win = window.open('', '_blank');
+        if (!win) {
+            Mensagem('O navegador bloqueou o popup.', 'Por favor, permita popups para este site, no canto acima a direita.');
+            return;
+        }
+        const tabela = document.getElementById('pedido-table');
+        const linhas = tabela.querySelectorAll('tbody tr');
+        const strTotalPedido = document.getElementById('total-pedido')?.innerText.replace("Preço Total: R$ ", "") || '0,00';
+        const totalPedido = parseFloat(strTotalPedido);
+        const nrOrcamento = $("#nrOrcamento").text();
+        const agora = new Date();
+        const dataHoraFormatada = agora.toLocaleString('pt-BR', {
+            day: '2-digit', month: '2-digit', year: 'numeric',
+            hour: '2-digit', minute: '2-digit', second: '2-digit'
+        });
+
+        let produtos = '';
+
+        const totalPedidoEmReal = totalPedido.toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+        });
+
+        linhas.forEach((linha) => {
+            const colunas = linha.querySelectorAll('td');
+            if (colunas.length >= 7) {
+                const ref = colunas[1].innerText.trim();
+                const desc = colunas[2].innerText.trim();
+                const preco = parseFloat(colunas[4].innerText.replace("R$ ", ""));
+                const qtd = parseFloat(colunas[7].innerText.trim());
+                const total = (preco * qtd);
+
+                const precoEmReal = preco.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                });
+
+                const totalEmReal = total.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                });
+
+                produtos += `
+                <tr>
+                    <td><input type="text" value="${ref}" /></td>
+                    <td><input type="text" value="${desc}" /></td>
+                    <td><input type="text" value="UN" /></td>
+                    <td><input type="number" value="${qtd}" /></td>
+                    <td><input type="text" value="${precoEmReal}" /></td>
+                    <td><input type="text" value="${totalEmReal}" /></td>
+                </tr>
+            `;
+            }
+        });
+
+        const notaFiscal = `
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>Gestorix - Produtos e Serviços para Veículos</title>
+      <style>
+        body { font-family: Arial, sans-serif; font-size: 11px; margin: 10px; }
+        .danfe-container { border: 2px solid #000; padding: 8px; }
+        .danfe-header { display: flex; justify-content: space-between; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 10px; }
+        .logo { width: 50%; }
+        .orcamento-nota { text-align: right; font-size: 12px; }
+        .info-geral, .dados-veiculo, .dados-empresa, .dados-cliente, .dados-produtos, .totais { border: 1px solid #000; padding: 4px; margin-bottom: 10px; }
+        h4 { margin: 0 0 5px 0; background: #f2f2f2; padding: 2px; border-bottom: 1px solid #000; }
+        table { width: 100%; border-collapse: collapse; font-size: 10px; }
+        table th, table td { border: 1px solid #000; padding: 2px; text-align: center; }
+        input { border: none; border-bottom: 1px solid #000; width: 100%; padding:1px 0px 1px 0px }
+        .totais { font-size: 12px; font-weight: bold; }
+        .imprimir { float: initial; }
+      </style>
+    </head>
+    <body>
+      <div class="danfe-container">
+        <header class="danfe-header">
+            <div class="logo">
+                <img src="../Images/logo-header-black.png">
+            </div>
+            <div class="orcamento-nota">
+                <div>Nº <span id="nrOrcamentoPreNota">${nrOrcamento}</span> </div>
+            </div>
+        </header>
+
+        <section class="info-geral">
+            <div><strong>Data/Hora:</strong> ${dataHoraFormatada}</div>
+        </section>
+
+        <section class="dados-empresa">
+            <h4>EMITENTE</h4>
+            <div><label><b>Nome/Razão Social:</b> <input type="text" value="Gestorix Vicente Antunes Correia Peças e Acessórios"/></label></div>
+            <div><label><b>CNPJ/CPF:</b> <input type="text" value="${dadosEmpresa.Cnpj}"/></label></div>
+            <div><label><b>Endereço:</b> <input type="text" value="${dadosEmpresa.Logradouro}, ${dadosEmpresa.Numero}"/></label></div>
+            <div><label><b>Bairro:</b> <input type="text" value="${dadosEmpresa.Bairro}"/></label></div>
+            <div><label><b>Cidade:</b> <input type="text" value="${dadosEmpresa.Cidade}"/></label></div>
+            <div><label><b>CEP:</b> <input type="text" value="${dadosEmpresa.Cep}"/></label></div>
+            <div><label><b>UF:</b> <input type="text" value="${dadosEmpresa.Estado}"/></label></div>
+        </section>
+
+        <section class="dados-cliente">
+            <h4>CLIENTE</h4>
+            <div><label><b>Nome/Razão Social:</b> <input type="text" id="Nome" value=""/></label></div>
+            <div><label><b>CNPJ/CPF:</b> <input type="text" id="Documento" value=""/></label></div>
+            <div><label><b>Endereço:</b> <input type="text" id="Endereco" value=""/></label></div>
+            <div><label><b>Bairro:</b> <input type="text" id="Bairro" value=""/></label></div>
+            <div><label><b>Cidade:</b> <input type="text" id="Cidade" value=""/></label></div>
+            <div><label><b>UF:</b> <input type="text" id="Uf" value=""/></label></div>
+            <div><label><b>CEP:</b> <input type="text" id="Cep" value=""/></label></div>
+        </section>
+
+        <section class="dados-veiculo">
+            <h4>VEICULO</h4>
+            <div><label><b>Descrição:</b> <input type="text" id="Descricao" value=""/></label></div>
+            <div><label><b>Placa:</b> <input type="text" id="Placa" value=""/></label></div>
+            <div><label><b>Km:</b> <input type="text" id="QuilometrosRodados" value=""/></label></div>
+        </section>
+
+        <section class="dados-produtos">
+            <h4>DESCRIÇÃO DE PRODUTOS E SERVIÇOS</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Referência</th>
+                        <th>Descrição</th>
+                        <th>Unidade</th>
+                        <th>Quantidade</th>
+                        <th>Valor Unitário</th>
+                        <th>Valor Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${produtos}
+                </tbody>
+            </table>
+        </section>
+
+        <section class="totais">
+            Total Nota: ${totalPedidoEmReal}
+        </section>
+        <section class="imprimir">
+            <button id="imprimir-nota" onclick="this.remove();" style="padding: 10px; border-radius: 6px; cursor: pointer"> Imprimir Nota </button>
+        </section>
+
+      </div>
+    </body>
+    </html>
+    `;
+        win.document.write(notaFiscal);
+        win.document.close();   
+
+        win.onload = function () {
+            buscarClientePedido(win);
+            buscarVeiculoPedido(win);
+
+            var btnImprimir = win.document.getElementById("imprimir-nota");
+            btnImprimir.addEventListener("click", function () {
+                cadastrarClientePedido(win);
+                cadastrarVeiculoPedido(win);
+                win.print();
+                win.close();
+            });
+        };
+    });  
+</script>
+

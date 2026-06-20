@@ -1,0 +1,10 @@
+C:\Users\jacqu\OneDrive\Documentos\GitHub\Gestorix\GestorixlDLL\bin\Debug\GestorixDLL.dll
+C:\Users\jacqu\OneDrive\Documentos\GitHub\Gestorix\GestorixlDLL\bin\Debug\GestorixDLL.pdb
+C:\Users\jacqu\OneDrive\Documentos\GitHub\Gestorix\GestorixlDLL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\jacqu\OneDrive\Documentos\GitHub\Gestorix\GestorixlDLL\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\jacqu\OneDrive\Documentos\GitHub\Gestorix\GestorixlDLL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\jacqu\OneDrive\Documentos\GitHub\Gestorix\GestorixlDLL\obj\Debug\GestorixDLL.csproj.AssemblyReference.cache
+C:\Users\jacqu\OneDrive\Documentos\GitHub\Gestorix\GestorixlDLL\obj\Debug\GestorixDLL.csproj.CoreCompileInputs.cache
+C:\Users\jacqu\OneDrive\Documentos\GitHub\Gestorix\GestorixlDLL\obj\Debug\Gestorix.AA8D49D7.Up2Date
+C:\Users\jacqu\OneDrive\Documentos\GitHub\Gestorix\GestorixlDLL\obj\Debug\GestorixDLL.dll
+C:\Users\jacqu\OneDrive\Documentos\GitHub\Gestorix\GestorixlDLL\obj\Debug\GestorixDLL.pdb
